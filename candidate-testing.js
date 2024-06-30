@@ -24,7 +24,7 @@ function askForName() {
 function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
   for (let i = 0; i < questions.length; i++) {
-    let candidateAnswers = input.question(`${i + 1} ${questions[i]}`);
+    candidateAnswers[i] = input.question(`${i + 1} ${questions[i]}`);
   }
   return candidateAnswers;
 }
@@ -34,7 +34,7 @@ function gradeQuiz(candidateAnswers) {
 
   for (let i = 0; i < candidateAnswers.length; i++) {
     console.log(`Your answer: ${candidateAnswers[i]}`);
-    if (candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()) {
+    if ((candidateAnswers[i].toLowerCase()) === (correctAnswers[i].toLowerCase())) {
       console.log(`Correct answer: ${correctAnswers[i]}`);
     } else {
       console.log(`Wrong the correct answer is: ${correctAnswers[i]}`);
@@ -44,11 +44,10 @@ function gradeQuiz(candidateAnswers) {
   let numOfCorrectAnswers = 0;
   for (let i = 0; i < correctAnswers.length; i++){
     if (candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()) {
-      console.log(candidateAnswers)
-      numOfCorrectAnswers++
+      numOfCorrectAnswers++;
     }
   }
-  let numOfQuestion =correctAnswers.length;
+  let numOfQuestion = correctAnswers.length;
   let grade = (numOfCorrectAnswers / numOfQuestion) * 100; 
   console.log(`>>> Overall Grade: ${grade}% (${numOfCorrectAnswers} of ${numOfQuestion} response correct <<<`);
   if (grade >= 80) {
