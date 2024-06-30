@@ -11,7 +11,7 @@ let candidateAnswer = "";
 
 
 //TODO: Variables for Part 2
-let questions = ["who was the first American woman in space? ","True or false: 5 kilometer == 5000 meters? " ,"(5 + 3)/2 * 10 =? ","Given the array [8, Orbit, Trajectory, 45] what entry is at index 2? ", "Whats the minimum crew size for the ISS? "];
+let questions = ["Who was the first American woman in space? ","True or false: 5 kilometer == 5000 meters? ","(5 + 3)/2 * 10 = ? ","Given the array [8, 'Orbit', 'Trajectory', 45], what entry is at index 2? ","What is the minimum crew size for the ISS? "];
 let correctAnswers = ["Sally Ride","true","40","Trajectory","3"];
 let candidateAnswers = [];
 
@@ -23,18 +23,39 @@ function askForName() {
 
 function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
-  for (let i = 0; i < questions.length; i++)
- candidateAnswers = input.question(questions[i])
+  for (let i = 0; i < questions.length; i++) {
+    candidateAnswers = input.question(`${i + 1} ${questions[i]}`);
+  }
+  return candidateAnswers;
 }
-
 function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
-  console.log(`${candidateAnswers} ${correctAnswers}`)
 
-
-  let grade = (Number(correctAnswers) / Number(questions) * 100);  //TODO 3.2 use this variable to calculate the candidates score.
-
+  for (let i = 0; i < candidateAnswers.length; i++){
+    console.log(`Your answer: ${candidateAnswers[i]}`);
+  }
+    if (candidateAnswers[i].toLowercase() === correctAnswers[i].toLowerCase()){
+      console.log(`Correct answer: ${correctAnswers[i]}`);
+    } else {
+      console.log(`Wrong the correct answer is: ${correctAnswers[i]}`);
+    }
+  
+    //TODO 3.2 use this variable to calculate the candidates score.
+  let numOfCorrectAnswers = 0;
+  for (let i = 0; i < correctAnswers.length; i++){
+    if (candidateAnswers[i].toLowercase() === correctAnswers[i].toLowerCase()){
+      numOfCorrectAnswers++
+    }
+  }
+  let numOfQuestion =correctAnswers.length;
+  let grade = (numOfCorrectAnswers / numOfQuestion) * 100; 
+  console.log(`>>> Overall Grade: ${grade}% (${numOfCorrectAnswers} of ${numOfQuestion} response correct <<<`);
+  if (grade >= 80) {
+    console.log(`>>> Status: Passed <<<`);
+  } else {
+    console.log(`>>> Status: Failed <<<`);
+  }
 
   return grade;
 }
