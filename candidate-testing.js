@@ -24,7 +24,7 @@ function askForName() {
 function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
   for (let i = 0; i < questions.length; i++) {
-    candidateAnswers = input.question(`${i + 1} ${questions[i]}`);
+    let candidateAnswers = input.question(`${i + 1} ${questions[i]}`);
   }
   return candidateAnswers;
 }
@@ -32,19 +32,19 @@ function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
 
-  for (let i = 0; i < candidateAnswers.length; i++){
+  for (let i = 0; i < candidateAnswers.length; i++) {
     console.log(`Your answer: ${candidateAnswers[i]}`);
-  }
-    if (candidateAnswers[i].toLowercase() === correctAnswers[i].toLowerCase()){
+    if (candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()) {
       console.log(`Correct answer: ${correctAnswers[i]}`);
     } else {
       console.log(`Wrong the correct answer is: ${correctAnswers[i]}`);
     }
-  
+  }
     //TODO 3.2 use this variable to calculate the candidates score.
   let numOfCorrectAnswers = 0;
   for (let i = 0; i < correctAnswers.length; i++){
-    if (candidateAnswers[i].toLowercase() === correctAnswers[i].toLowerCase()){
+    if (candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()) {
+      console.log(candidateAnswers)
       numOfCorrectAnswers++
     }
   }
